@@ -1,0 +1,53 @@
+Program (Rectangle1.java)
+package Shape;
+public class Rectangle1 {
+private double length, breadth;
+public void setRectangle(double len, double br) {
+length = len;
+breadth = br;
+}
+public void area() {
+double area = length * breadth;
+System.out.println("Area of Rectangle =" + area);
+}
+}
+Program (Square.java)
+package Shape;
+public class Square {
+private double side;
+public void setSquare(double val) {
+side = val;
+}
+public void area() {
+System.out.println("Area of Square=" + (side * side));
+}
+}
+Program(Circle1.java)
+package Shape;
+public class Circle1 {
+private double rad;
+public void setCircle(double radius) {
+rad = radius;
+}
+public void area() {
+double area = 3.14 * rad * rad;
+System.out.println("Area of Rectangle =" + area);
+}
+}
+Program(Program10.java)
+import Shape.Rectangle1;
+import Shape.Square;
+import Shape.Circle1;
+public class Program10 {
+public static void main(String args[]) {
+Rectangle1 rect = new Rectangle1();
+rect.setRectangle(5.6, 6.4);
+rect.area();
+Square sq = new Square();
+sq.setSquare(10.5);
+sq.area();
+Circle1 round = new Circle1();
+round.setCircle(5.6);
+round.area();
+}
+}

@@ -1,0 +1,30 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+public class TextFileAnalyzer {
+ public static void main(String[] args) {
+ String fileName = "C:\\Users\\diwak\\OneDrive\\Desktop\\Files\\College Data\\DSATM\\NBA
+MCA DSATM\\New Text Document.txt"; // Change this to your file name
+ try {
+ BufferedReader reader = new BufferedReader(new FileReader(fileName));
+ int charCount = 0;
+ int wordCount = 0;
+ int lineCount = 0;
+ String line;
+ while ((line = reader.readLine()) != null) {
+ lineCount++;
+ String[] words = line.split("\\s+"); // Split by whitespace
+ wordCount += words.length;
+ for (String word : words) {
+ charCount += word.length();
+ }
+ }
+ reader.close();
+ System.out.println("Number of characters: " + charCount);
+ System.out.println("Number of words: " + wordCount);
+ System.out.println("Number of lines: " + lineCount);
+ } catch (IOException e) {
+ System.err.println("Error reading the file: " + e.getMessage());
+ }
+ }
+}

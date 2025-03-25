@@ -1,0 +1,33 @@
+import java.awt.*; //Contains classes for GUI components like Frame, Label, Font
+import java.awt.event.*; //Provides event handling classes like KeyListener, KeyEvent
+public class Program9 extends Frame implements KeyListener {
+Label lbl;
+Program9() {
+ addKeyListener(this); // Registers the frame to listen for keyboard events.
+ requestFocus(); // Ensures the frame receives keyboard input
+ lbl = new Label(); // Creates label
+ lbl.setBounds(100, 100, 200, 40); // Position and size
+ lbl.setFont(new Font("Calibri", Font.BOLD, 16)); // Font settings
+ add(lbl); // Adds label to frame
+ setSize(400, 300); // Frame size
+ setLayout(null); // No layout manager
+ setVisible(true); // Makes frame visible
+}
+public void keyPressed(KeyEvent e) {
+    if (e.getKeyChar() == 'M' || e.getKeyChar() == 'm')
+lbl.setText("Good morning");
+else if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a')
+lbl.setText("Good afternoon");
+else if (e.getKeyChar() == 'E' || e.getKeyChar() == 'e')
+lbl.setText("Good evening");
+else if (e.getKeyChar() == 'N' || e.getKeyChar() == 'n')
+lbl.setText("Good night");
+}
+public void keyReleased(KeyEvent e) {
+}
+public void keyTyped(KeyEvent e) {
+}
+public static void main(String[] args) {
+new Program9();
+}
+}

@@ -1,0 +1,21 @@
+public class DayOfWeekTest {
+    // Enumeration for Day of Week
+ public enum DayOfWeek {
+ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
+ // Method to check if it's a workday (Monday to Friday)
+ public boolean isWorkday() {
+ return this != SATURDAY && this != SUNDAY;
+ }
+ }
+ public static void main(String[] args) {
+ // Test the isWorkday() method
+ System.out.println(DayOfWeek.SUNDAY + " is workday: " +
+DayOfWeek.SUNDAY.isWorkday()); // false
+ System.out.println(DayOfWeek.MONDAY + " is workday: " +
+DayOfWeek.MONDAY.isWorkday()); // true
+ System.out.println(DayOfWeek.FRIDAY + " is workday: " + DayOfWeek.FRIDAY.isWorkday());
+// true
+ System.out.println(DayOfWeek.SATURDAY + " is workday: " +
+DayOfWeek.SATURDAY.isWorkday()); // false
+ }
+}

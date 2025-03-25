@@ -1,0 +1,41 @@
+// Interface 1
+interface Engine {
+ void startEngine(); // Abstract method for starting the engine
+}
+// Interface 2
+interface Transmission {
+ void changeGear(int gear); // Abstract method for changing the gear
+}
+// Class implementing multiple interfaces
+class Car implements Engine, Transmission {
+ private int currentGear;
+ // Implementing the startEngine method from Engine interface
+ @Override
+ public void startEngine() {
+
+
+
+ System.out.println("Engine started.");
+ }
+ // Implementing the changeGear method from Transmission interface
+ @Override
+ public void changeGear(int gear) {
+ currentGear = gear;
+ System.out.println("Gear changed to: " + currentGear);
+ }
+ // Additional method in the Car class
+ void drive() {
+ System.out.println("Car is driving.");
+ }
+}
+// Main class
+public class MultipleInheritanceDemo {
+ public static void main(String[] args) {
+ // Create an object of the Car class
+ Car myCar = new Car();
+ // Using methods from both interfaces
+ myCar.startEngine(); // From Engine interface
+ myCar.changeGear(2); // From Transmission interface
+ myCar.drive(); // Class-specific method
+ }
+}

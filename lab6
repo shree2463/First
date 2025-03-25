@@ -1,0 +1,57 @@
+// Parent class
+abstract class Shape {
+ String name;
+ // Constructor for the Shape class
+ Shape(String name) {
+ this.name = name;
+ }
+ // Abstract method to calculate area
+ abstract double calculateArea();
+ // Method to display shape details
+ void displayInfo() {
+ System.out.println("Shape: " + name);
+ }
+}
+// Child class for Rectangle
+class Rectangle extends Shape {
+ double length, width;
+ // Constructor for Rectangle class
+ Rectangle(double length, double width) {
+ super("Rectangle");
+ this.length = length;
+ this.width = width;
+ }
+ // Overriding the calculateArea method
+ @Override
+ double calculateArea() {
+ return length * width;
+ }
+}
+// Child class for Circle
+class Circle extends Shape {
+ double radius;
+ // Constructor for Circle class
+ Circle(double radius) {
+ super("Circle");
+ this.radius = radius;
+ }
+ // Overriding the calculateArea method
+ @Override
+ double calculateArea() {
+ return Math.PI * radius * radius;
+ }
+}
+// Main class
+public class ShapeInheritanceDemo {
+ public static void main(String[] args) {
+ // Create an object of the Rectangle class
+ Rectangle rectangle = new Rectangle(5, 3);
+ rectangle.displayInfo();
+ System.out.println("Area: " + rectangle.calculateArea());
+ System.out.println();
+ // Create an object of the Circle class
+ Circle circle = new Circle(4);
+ circle.displayInfo();
+ System.out.println("Area: " + circle.calculateArea());
+ }
+}
