@@ -25,3 +25,99 @@ public class PalindromeCheck {
  scanner.close();
  }
 }
+
+
+
+
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Process {
+public:
+    int id;          // Process ID
+    int burst_time;  // Total time required for the process to complete
+    int remaining_time; // Remaining burst time to execute
+
+    Process(int id, int burst_time) {
+        this->id = id;
+        this->burst_time = burst_time;
+        this->remaining_time = burst_time;
+    }
+};
+
+class RoundRobinScheduler {
+private:
+    queue<Process> processQueue;  // Circular queue to manage processes
+    int timeQuantum;  // Time slice for each process
+
+public:
+    RoundRobinScheduler(int timeQuantum) {
+        this->timeQuantum = timeQuantum;
+    }
+
+    // Add a new process to the queue
+    void addProcess(int id, int burst_time) {
+        Process newProcess(id, burst_time);
+        processQueue.push(newProcess);
+    }
+
+    // Simulate Round Robin scheduling
+    void run() {
+        cout << "\nExecuting Round-Robin Scheduling...\n";
+
+        while (!processQueue.empty()) {
+            // Get the front process
+            Process currentProcess = processQueue.front();
+            processQueue.pop();
+
+            // Determine the time slice for the process (either its remaining time or the time quantum)
+            int timeToExecute = min(currentProcess.remaining_time, timeQuantum);
+
+            // Simulate the execution of the process
+            cout << "Process " << currentProcess.id << " is executing for " << timeToExecute << " units.\n";
+
+            // Decrease the remaining time of the process
+            currentProcess.remaining_time -= timeToExecute;
+
+            // If the process has more time left, push it back to the queue
+            if (currentProcess.remaining_time > 0) {
+                processQueue.push(currentProcess);
+            } else {
+                cout << "Process " << currentProcess.id << " has finished executing.\n";
+            }
+        }
+        cout << "\nAll processes have completed execution.\n";
+    }
+};
+
+int main() {
+    int numProcesses, timeQuantum;
+
+    // Get user input for the number of processes and time quantum
+    cout << "Enter the number of processes: ";
+    cin >> numProcesses;
+
+    cout << "Enter the time quantum (time slice) for each process: ";
+    cin >> timeQuantum;
+
+    // Create a RoundRobinScheduler with the given time quantum
+    RoundRobinScheduler scheduler(timeQuantum);
+
+    // Get process IDs and burst times from the user
+    for (int i = 0; i < numProcesses; ++i) {
+        int burstTime;
+        cout << "Enter burst time for Process " << i + 1 << ": ";
+        cin >> burstTime;
+        scheduler.addProcess(i + 1, burstTime);  // Process ID starts from 1
+    }
+
+    // Run the Round-Robin scheduler
+    scheduler.run();
+
+    return 0;
+}
+
